@@ -1,9 +1,23 @@
 #include <iostream>
-#include "./extra.cpp"
+#include "extra.h"
 
 int main(){
 
-    std::cout << "Hello world!" << std::endl << myPow(5,3) << std::endl;
+    try {
+        std::cout << "Hello world!" << std::endl << myPow(-5, -2) << std::endl;
 
-    return 0;
+        return 0;
+    }
+    catch (int errCode) {
+        switch (errCode) {
+        case -1: 
+            std::cout << "Error! Division by zero!\n"; 
+            break;
+        case -2: 
+            std::cout << "Error! Zero to the power of zero is undefined!\n";
+            break;
+        }
+
+        return errCode;
+    }
 }
